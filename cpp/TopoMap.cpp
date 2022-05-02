@@ -79,12 +79,17 @@ std::vector<Point> TopoMap::placePoints(const std::vector<std::pair<int, int> > 
     std::vector<int> order = sortEdges(edges,weights);
 
     for(int _i = 0;_i < order.size();_i ++) {
+        std::cout << "Iteration number: " << _i << "\n";
         int i = order[_i];
         int p1 = edges[i].first;
         int p2 = edges[i].second;
+        std::cout << "Edge: " << p1 << "," << p2 << weights[i]<< "\n";
 
         int c1 = comps.find(p1);
         int c2 = comps.find(p2);
+
+        std::cout << "c1: " << c1 << "\n";
+        std::cout << "c2: " << c2 << "\n";
 
         if(c1 == c2) {
             std::cerr << "Error!!! MST edge belongs to the same component!!!" << std::endl;
