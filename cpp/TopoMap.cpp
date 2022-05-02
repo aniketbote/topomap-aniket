@@ -83,7 +83,7 @@ std::vector<Point> TopoMap::placePoints(const std::vector<std::pair<int, int> > 
         int i = order[_i];
         int p1 = edges[i].first;
         int p2 = edges[i].second;
-        std::cout << "Edge: " << p1 << "," << p2 << weights[i]<< "\n";
+        std::cout << "Edge: (" << p1 << "," << p2<< ")  "<< weights[i]<< "\n";
 
         int c1 = comps.find(p1);
         int c2 = comps.find(p2);
