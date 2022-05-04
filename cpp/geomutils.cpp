@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include <algorithm>
 #include <cassert>
+#include <iostream>
 
 #include <boost/geometry.hpp>
 #include <boost/geometry/geometries/polygon.hpp>
