@@ -201,9 +201,11 @@ Component TopoMap::mergeComponents(Component &c1, Component &c2, int v1, int v2,
     if(length > 0) {
         // transform the vertices of the two components appropriately
         Transformation t1 = alignHull(c1.hull,verts[v1].p,true); // aligned w.r.t. top edge. so stays in the bottom
+        std::cout << "Transformation t1: (tx, ty) -> (" << t1.tx << "," << t1.ty<< ")  "<< "(sin, cos) -> (" << t1.sin << "," << t1.cos<< ")  "<< "\n";
         this->transformComponent(c1,t1,0);
 
         Transformation t2 = alignHull(c2.hull,verts[v2].p,false); // aligned w.r.t. bottom edge. so offset should be added
+        std::cout << "Transformation t1: (tx, ty) -> (" << t1.tx << "," << t1.ty<< ")  "<< "(sin, cos) -> (" << t1.sin << "," << t1.cos<< ")  "<< "\n";
         this->transformComponent(c2,t2,length);
 
         // compute the hull of the merged component
