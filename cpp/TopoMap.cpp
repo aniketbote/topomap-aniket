@@ -58,17 +58,35 @@ void TopoMap::emst(std::vector<double> &data, int dim, std::vector<std::pair<int
         weights.push_back( unmappedResults(2, i));
     }
 }
-void print_component(Component &c1, int name) {
+void print_vector(std::vector<int> &v, int name){
     std::cout << "Vertexes in "<< name << ": ";
-    for(int i = 0;i < c1.vertices.size();i ++) {
-        std::cout << c1.vertices[i]<<" ";
+    for(int i = 0;i < v.size();i ++) {
+        std::cout << v[i]<<" ";
     }
+}
+
+void print_polygon(Polygon &h, int name){
     std::cout << "\nHull in "<< name << ": \n"<<"[";
-    for(int i = 0;i < c1.hull.size();i ++) {
-        std::cout << "("<< c1.hull[i].x<< ", "<< c1.hull[i].y<<"), ";
+    for(int i = 0;i < h.size();i ++) {
+        std::cout << "("<< h[i].x<< ", "<< h[i].y<<"), ";
     }
     std::cout <<"]\n";
 }
+
+void print_component(Component &c1, int name) {
+    print_vector(c1.vertices, name);
+    print_polygon(c1.hull, name);
+    // std::cout << "Vertexes in "<< name << ": ";
+    // for(int i = 0;i < c1.vertices.size();i ++) {
+    //     std::cout << c1.vertices[i]<<" ";
+    // }
+    // std::cout << "\nHull in "<< name << ": \n"<<"[";
+    // for(int i = 0;i < c1.hull.size();i ++) {
+    //     std::cout << "("<< c1.hull[i].x<< ", "<< c1.hull[i].y<<"), ";
+    // }
+    // std::cout <<"]\n";
+}
+
 
 std::vector<Point> TopoMap::placePoints(const std::vector<std::pair<int, int> > &edges, const std::vector<double> &weights) {
     if(edges.size() != weights.size()) {
@@ -216,6 +234,7 @@ Component TopoMap::mergeComponents(Component &c1, Component &c2, int v1, int v2,
         for(int i = 0;i < c2.hull.size() - 1;i ++) {
             pts.push_back(transform(c2.hull[i],t2,length));
         }
+
         computeConvexHull(pts,merged.hull);
     } else {
         // support for points sharing the same coordinates (MST edge length = 0)
