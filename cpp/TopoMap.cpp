@@ -96,6 +96,18 @@ void print_verts(std::vector<Vertex> vout, int name){
 }
 
 
+void get_convex_hull_custom(){
+    Polygon custompts;
+    Polygon customhull;
+    custompts.push_back(Point(0,0));
+    custompts.push_back(Point(4.58,7.14));
+    custompts.push_back(Point(0,7.14));
+    computeConvexHull(custompts, customhull);
+    print_polygon(customhull);
+
+}
+
+
 std::vector<Point> TopoMap::placePoints(const std::vector<std::pair<int, int> > &edges, const std::vector<double> &weights) {
     if(edges.size() != weights.size()) {
         std::cerr << "edges and lengths don't match" << std::endl;
@@ -150,6 +162,7 @@ std::vector<Point> TopoMap::placePoints(const std::vector<std::pair<int, int> > 
     for(int i = 0;i < verts.size();i ++) {
         pts.push_back(verts[i].p);
     }
+    get_convex_hull_custom();
     return pts;
 }
 
