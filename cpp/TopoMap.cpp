@@ -210,10 +210,12 @@ void TopoMap::transformComponent(const Component &c, const Transformation &t, do
 
 Component TopoMap::mergeComponents(Component &c1, Component &c2, int v1, int v2, double length) {
     // compute the merged component
+    std::cout <<"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n";
     Component merged;
     merged.vertices.clear();
     merged.vertices.insert(merged.vertices.end(),c1.vertices.begin(),c1.vertices.end());
     merged.vertices.insert(merged.vertices.end(),c2.vertices.begin(),c2.vertices.end());
+    std::cout <<"Merged Vertices\n";
     print_vector(merged.vertices, -1);
 
     merged.hull.clear();
@@ -235,8 +237,10 @@ Component TopoMap::mergeComponents(Component &c1, Component &c2, int v1, int v2,
         for(int i = 0;i < c2.hull.size() - 1;i ++) {
             pts.push_back(transform(c2.hull[i],t2,length));
         }
+        std::cout <<"Polygon points BEFORE passing to compute convex hull\n";
         print_polygon(pts, -1);
         computeConvexHull(pts,merged.hull);
+        std::cout <<"Polygon points AFTER passing to compute convex hull\n";
         print_polygon(merged.hull, -2);
     } else {
         // support for points sharing the same coordinates (MST edge length = 0)
@@ -247,7 +251,7 @@ Component TopoMap::mergeComponents(Component &c1, Component &c2, int v1, int v2,
         merged.hull.push_back(c2.hull[0]);
         merged.hull.push_back(c2.hull[1]);
     }
-
+    std::cout <<"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n";
     return merged;
 }
 
