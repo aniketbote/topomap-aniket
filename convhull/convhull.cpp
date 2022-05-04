@@ -23,8 +23,9 @@ void get_convex_hull_custom(){
 
 }
 
-void main(){
+int main(){
     get_convex_hull_custom();
+    return 0;
 }
 
 

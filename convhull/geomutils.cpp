@@ -1,8 +1,5 @@
 #include "geomutils.h"
 
-#include <stdint.h>
-#include <algorithm>
-#include <cassert>
 #include <iostream>
 
 #include <boost/geometry.hpp>
