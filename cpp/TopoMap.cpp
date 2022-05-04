@@ -63,11 +63,11 @@ void print_component(Component &c1, int name) {
     for(int i = 0;i < c1.vertices.size();i ++) {
         std::cout << c1.vertices[i]<<" ";
     }
-    std::cout << "Hull in "<< name << ": ";
+    std::cout << "\nHull in "<< name << ": \n"<<"[";
     for(int i = 0;i < c1.hull.size();i ++) {
-        std::cout << "i =  "<<i<<"  x = "<< c1.hull[i].x<< "  y = "<< c1.hull[i].y<<" \n";
+        std::cout << "("<< c1.hull[i].x<< ", "<< c1.hull[i].y<<"), ";
     }
-    std::cout <<"\n";
+    std::cout <<"]\n";
 }
 
 std::vector<Point> TopoMap::placePoints(const std::vector<std::pair<int, int> > &edges, const std::vector<double> &weights) {
