@@ -87,6 +87,14 @@ void print_component(Component &c1, int name) {
     // std::cout <<"]\n";
 }
 
+void print_verts(std::vector<Vertex> vout, int name){
+    std::cout << "\nFinal Vertices in iteration"<< name << ": \n"<<"[";
+    for(int i = 0;i < vout.size();i ++) {
+        std::cout << "("<< vout[i].p.x<< ","<< vout[i].p.y<<"), ";
+    }
+    std::cout <<"]\n";
+}
+
 
 std::vector<Point> TopoMap::placePoints(const std::vector<std::pair<int, int> > &edges, const std::vector<double> &weights) {
     if(edges.size() != weights.size()) {
@@ -135,6 +143,7 @@ std::vector<Point> TopoMap::placePoints(const std::vector<std::pair<int, int> > 
         int c = comps.find(c1);
         compMap[c] = comp;
         print_component(comp, c);
+        print_verts(verts, _i);
         std::cout <<"-------------------------------------------------------------\n";
     }
     std::vector<Point> pts;

@@ -26,10 +26,10 @@ std::vector<int> sortEdges(const std::vector<std::pair<int, int>> &edges, const 
 void findAngle(const Point &p1, const Point &p2, Transformation &t) {
     Point vec(p2.x - p1.x,p2.y - p1.y);
     double n = new_len(vec);
-    std::cout << "BEFORE DIV FIND ANGLE Vec (x, y): (" << vec.x << "," << vec.y<< ")  "<< n<< "\n";
+    std::cout << "BEFORE DIV FIND ANGLE Vec (x, y): (" << vec.x << "," << vec.y<< ")  "<<" Magnitude: "<< n<< "\n";
     vec.x /= n;
     vec.y /= n;
-    std::cout << "AFTER DIV FIND ANGLE Vec (x, y): (" << vec.x << "," << vec.y<< ")  "<< n<< "\n";
+    std::cout << "AFTER DIV FIND ANGLE Vec (x, y): (" << vec.x << "," << vec.y<< ")  "<< "\n";
     t.cos = vec.x;
     t.sin = std::sqrt(1 - t.cos * t.cos);
     if(vec.y >= 0) {
