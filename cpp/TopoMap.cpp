@@ -220,7 +220,7 @@ Component TopoMap::mergeComponents(Component &c1, Component &c2, int v1, int v2,
     if(length > 0) {
         // transform the vertices of the two components appropriately
         Transformation t1 = alignHull(c1.hull,verts[v1].p,true); // aligned w.r.t. top edge. so stays in the bottom
-        std::cout << "Transformation t1: (tx, ty) -> (" << t1.tx << "," << t1.ty<< ")  "<< "(sin, cos) -> (" << t1.sin << "," << t1.cos<< ")  "<< "\n";
+        std::cout << "\nTransformation t1: (tx, ty) -> (" << t1.tx << "," << t1.ty<< ")  "<< "(sin, cos) -> (" << t1.sin << "," << t1.cos<< ")  "<< "\n";
         this->transformComponent(c1,t1,0);
 
         Transformation t2 = alignHull(c2.hull,verts[v2].p,false); // aligned w.r.t. bottom edge. so offset should be added
@@ -229,7 +229,6 @@ Component TopoMap::mergeComponents(Component &c1, Component &c2, int v1, int v2,
 
         // compute the hull of the merged component
         Polygon pts;
-        print_polygon(pts, -999);
         for(int i = 0;i < c1.hull.size() - 1;i ++) {
             pts.push_back(transform(c1.hull[i],t1,0));
         }
@@ -238,6 +237,7 @@ Component TopoMap::mergeComponents(Component &c1, Component &c2, int v1, int v2,
         }
         print_polygon(pts, -1);
         computeConvexHull(pts,merged.hull);
+        print_polygon(merged.hull, -2);
     } else {
         // support for points sharing the same coordinates (MST edge length = 0)
         if(c1.hull.size() != 2 || c2.hull.size() != 2) {
