@@ -59,9 +59,13 @@ void TopoMap::emst(std::vector<double> &data, int dim, std::vector<std::pair<int
     }
 }
 void print_component(Component &c1, int name) {
-    std::cout << "printing component value\n";
+    std::cout << "Vertexes in "<< name << ": ";
     for(int i = 0;i < c1.vertices.size();i ++) {
-        std::cout << "Vertexes in "<< name << ": "<< c1.vertices[i]<<" ";
+        std::cout << c1.vertices[i]<<" ";
+    }
+    std::cout << "Hull in "<< name << ": ";
+    for(int i = 0;i < c1.hull.size();i ++) {
+        std::cout << "i =  "<<i<<"  x = "<< c1.hull[i].x<< "  y = "<< c1.hull[i].y<<" \n";
     }
     std::cout <<"\n";
 }
@@ -112,6 +116,7 @@ std::vector<Point> TopoMap::placePoints(const std::vector<std::pair<int, int> > 
         comps.merge(c1, c2);
         int c = comps.find(c1);
         compMap[c] = comp;
+        print_component(comp, c);
         std::cout <<"-------------------------------------------------------------\n";
     }
     std::vector<Point> pts;
