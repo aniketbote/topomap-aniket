@@ -103,7 +103,7 @@ void get_convex_hull_custom(){
     custompts.push_back(Point(4.58,7.14));
     custompts.push_back(Point(0,7.14));
     computeConvexHull(custompts, customhull);
-    print_polygon(customhull);
+    print_polygon(customhull, -99999);
 
 }
 
