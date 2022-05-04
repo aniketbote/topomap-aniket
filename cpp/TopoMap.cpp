@@ -182,15 +182,15 @@ Transformation TopoMap::alignHull(const Polygon &hull, const Point &p, bool topE
     // translate
     trans.tx = -hull[v].x;
     trans.ty = -hull[v].y;
-    std::cout << "\nBefore Rotate Transformation t1: (tx, ty) -> (" << trans.tx << "," << trans.ty<< ")  "<< "(sin, cos) -> (" << trans.sin << "," << trans.cos<< ")  "<< "\n";
+    std::cout << "\nBefore Rotate Transformation trans: (tx, ty) -> (" << trans.tx << "," << trans.ty<< ")  "<< "(sin, cos) -> (" << trans.sin << "," << trans.cos<< ")  "<< "\n";
     // rotate
     if(hull.size() > 2) {
         findAngle(v1,v2,trans);
-        std::cout << "\nCOMPUTED After Rotate Transformation t1: (tx, ty) -> (" << trans.tx << "," << trans.ty<< ")  "<< "(sin, cos) -> (" << trans.sin << "," << trans.cos<< ")  "<< "\n";
+        std::cout << "\nCOMPUTED After Rotate Transformation trans: (tx, ty) -> (" << trans.tx << "," << trans.ty<< ")  "<< "(sin, cos) -> (" << trans.sin << "," << trans.cos<< ")  "<< "\n";
     } else {
         trans.sin = 0;
         trans.cos = 1;
-        std::cout << "\nASSIGNED After Rotate Transformation t1: (tx, ty) -> (" << trans.tx << "," << trans.ty<< ")  "<< "(sin, cos) -> (" << trans.sin << "," << trans.cos<< ")  "<< "\n";
+        std::cout << "\nASSIGNED After Rotate Transformation trans: (tx, ty) -> (" << trans.tx << "," << trans.ty<< ")  "<< "(sin, cos) -> (" << trans.sin << "," << trans.cos<< ")  "<< "\n";
     }
     return trans;
 }
@@ -231,7 +231,7 @@ Component TopoMap::mergeComponents(Component &c1, Component &c2, int v1, int v2,
         this->transformComponent(c1,t1,0);
 
         Transformation t2 = alignHull(c2.hull,verts[v2].p,false); // aligned w.r.t. bottom edge. so offset should be added
-        std::cout << "Transformation t1: (tx, ty) -> (" << t1.tx << "," << t1.ty<< ")  "<< "(sin, cos) -> (" << t1.sin << "," << t1.cos<< ")  "<< "\n";
+        std::cout << "Transformation t2: (tx, ty) -> (" << t2.tx << "," << t2.ty<< ")  "<< "(sin, cos) -> (" << t2.sin << "," << t2.cos<< ")  "<< "\n";
         this->transformComponent(c2,t2,length);
 
         // compute the hull of the merged component
