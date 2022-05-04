@@ -214,6 +214,7 @@ Component TopoMap::mergeComponents(Component &c1, Component &c2, int v1, int v2,
     merged.vertices.clear();
     merged.vertices.insert(merged.vertices.end(),c1.vertices.begin(),c1.vertices.end());
     merged.vertices.insert(merged.vertices.end(),c2.vertices.begin(),c2.vertices.end());
+    print_vector(merged.vertices, -1)
 
     merged.hull.clear();
     if(length > 0) {
@@ -228,13 +229,14 @@ Component TopoMap::mergeComponents(Component &c1, Component &c2, int v1, int v2,
 
         // compute the hull of the merged component
         Polygon pts;
+        print_polygon(pts, -999);
         for(int i = 0;i < c1.hull.size() - 1;i ++) {
             pts.push_back(transform(c1.hull[i],t1,0));
         }
         for(int i = 0;i < c2.hull.size() - 1;i ++) {
             pts.push_back(transform(c2.hull[i],t2,length));
         }
-
+        print_polygon(pts, -1);
         computeConvexHull(pts,merged.hull);
     } else {
         // support for points sharing the same coordinates (MST edge length = 0)
