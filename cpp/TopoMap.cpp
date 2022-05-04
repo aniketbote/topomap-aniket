@@ -58,6 +58,13 @@ void TopoMap::emst(std::vector<double> &data, int dim, std::vector<std::pair<int
         weights.push_back( unmappedResults(2, i));
     }
 }
+void print_component(Component &c1, int name) {
+    std::cout << "printing component value\n";
+    for(int i = 0;i < c1.vertices.size();i ++) {
+        std::cout << "Vertexes in "<< name << ": "<< c1.vertices[i]<<" ";
+    }
+    std::cout <<"\n";
+}
 
 std::vector<Point> TopoMap::placePoints(const std::vector<std::pair<int, int> > &edges, const std::vector<double> &weights) {
     if(edges.size() != weights.size()) {
@@ -97,12 +104,15 @@ std::vector<Point> TopoMap::placePoints(const std::vector<std::pair<int, int> > 
         }
 
         Component &comp1 = compMap[c1];
+        print_component(comp1, c1);
         Component &comp2 = compMap[c2];
+        print_component(comp2, c2);
 
         Component comp = mergeComponents(comp1, comp2, p1, p2, weights[i]);
         comps.merge(c1, c2);
         int c = comps.find(c1);
         compMap[c] = comp;
+        std::cout <<"-------------------------------------------------------------\n";
     }
     std::vector<Point> pts;
     for(int i = 0;i < verts.size();i ++) {
