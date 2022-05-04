@@ -88,11 +88,11 @@ void print_component(Component &c1, int name) {
 }
 
 void print_verts(std::vector<Vertex> vout, int name){
-    std::cout << "\nFinal Vertices in iteration"<< name << ": \n"<<"[";
+    std::cout << "\nFinal Vertices in iteration "<< name << ": \n"<<"{";
     for(int i = 0;i < vout.size();i ++) {
-        std::cout << "("<< vout[i].p.x<< ","<< vout[i].p.y<<"), ";
+        std::cout <<vout[i].id<<" : "<<"("<< vout[i].p.x<< ","<< vout[i].p.y<<"), ";
     }
-    std::cout <<"]\n";
+    std::cout <<"}\n";
 }
 
 
