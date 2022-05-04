@@ -159,6 +159,7 @@ Transformation TopoMap::alignHull(const Polygon &hull, const Point &p, bool topE
             }
         }
     }
+    std::cout << "Align Hull v: " << v << "  d2: "<<d2<<"\n";
 
     // hull is ordered cloclwise by boost
     // v is the required vertex
@@ -175,17 +176,21 @@ Transformation TopoMap::alignHull(const Polygon &hull, const Point &p, bool topE
         v1 = hull[v];
         v2 = hull[v-1];
     }
+    std::cout << "Align Hull v1: " << "("<< v1.x<< ", "<< v1.y<<")" << "  v2: "<< "("<< v2.x<< ", "<< v2.y<<")"<<"\n";
 
     Transformation trans;
     // translate
     trans.tx = -hull[v].x;
     trans.ty = -hull[v].y;
+    std::cout << "\nBefore Rotate Transformation t1: (tx, ty) -> (" << trans.tx << "," << trans.ty<< ")  "<< "(sin, cos) -> (" << trans.sin << "," << trans.cos<< ")  "<< "\n";
     // rotate
     if(hull.size() > 2) {
         findAngle(v1,v2,trans);
+        std::cout << "\nCOMPUTED After Rotate Transformation t1: (tx, ty) -> (" << trans.tx << "," << trans.ty<< ")  "<< "(sin, cos) -> (" << trans.sin << "," << trans.cos<< ")  "<< "\n";
     } else {
         trans.sin = 0;
         trans.cos = 1;
+        std::cout << "\nASSIGNED After Rotate Transformation t1: (tx, ty) -> (" << trans.tx << "," << trans.ty<< ")  "<< "(sin, cos) -> (" << trans.sin << "," << trans.cos<< ")  "<< "\n";
     }
     return trans;
 }
