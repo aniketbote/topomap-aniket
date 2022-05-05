@@ -1,6 +1,6 @@
 %module code
 %{
-#include "code.h"
+#include "mycode.h"
 #include "geomutils.h"
 %}
 %include "std_vector.i"

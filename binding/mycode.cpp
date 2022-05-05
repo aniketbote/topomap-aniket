@@ -1,6 +1,6 @@
 #include <vector>
 #include "geomutils.h"
-#include "code.h"
+#include "mycode.h"
 
 using namespace std;
 
