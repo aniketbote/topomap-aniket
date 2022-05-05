@@ -1,10 +1,12 @@
 #include <vector>
 #include "geomutils.h"
 #include "mycode.h"
+#include <iostream>
 
 using namespace std;
 
 vector< vector<double> > computeConvexHull(vector< vector<double> > i_matrix){
+  cout <<"\nDone1.1";
   Polygon custompts, customhull;
   for (int r = 0; r < i_matrix.size(); r++){
     custompts.push_back(Point(i_matrix[r][0], i_matrix[r][1]));
@@ -16,6 +18,27 @@ vector< vector<double> > computeConvexHull(vector< vector<double> > i_matrix){
         res[i][1] = customhull[i].y;
   }
   return res;
+}
+
+int main()
+{
+    // Create an empty vector
+    vector< vector<double> > mat,mat2;
+    
+    vector<double> myRow1(0,0);
+    mat.push_back(myRow1);
+
+    vector<double> myRow2(7.61,9.48);
+    mat.push_back(myRow2);
+    
+    vector<double> myRow3(0,9.48);
+    mat.push_back(myRow3);
+    cout <<"Done1";
+
+    mat2 = computeConvexHull(mat);
+    cout <<"Done2";
+
+    return 0;
 }
 
 
