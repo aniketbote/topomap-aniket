@@ -1,4 +1,4 @@
-%module code
+%module mycode
 %{
 #include "mycode.h"
 #include "geomutils.h"
