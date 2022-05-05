@@ -3,6 +3,6 @@
 
 #include <vector>
 
-std::vector< std::vector<double> > computeConvexHull (std::vector< std::vector<double> > i_matrix);
+std::vector< std::vector<double> > customComputeConvexHull (std::vector< std::vector<double> > i_matrix);
 
 #endif

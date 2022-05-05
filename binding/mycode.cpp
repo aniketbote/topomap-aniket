@@ -5,7 +5,7 @@
 
 using namespace std;
 
-vector< vector<double> > computeConvexHull(vector< vector<double> > i_matrix){
+vector< vector<double> > customComputeConvexHull(vector< vector<double> > i_matrix){
   cout <<"\nDone1.1";
   Polygon custompts, customhull;
   for (int r = 0; r < i_matrix.size(); r++){
@@ -35,7 +35,7 @@ int main()
     mat.push_back(myRow3);
     cout <<"Done1";
 
-    mat2 = computeConvexHull(mat);
+    mat2 = customComputeConvexHull(mat);
     cout <<"Done2";
 
     return 0;
