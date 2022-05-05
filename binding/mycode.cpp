@@ -12,7 +12,8 @@ vector< vector<double> > customComputeConvexHull(vector< vector<double> > i_matr
     custompts.push_back(Point(i_matrix[r][0], i_matrix[r][1]));
   }
   computeConvexHull(custompts, customhull);
-  vector< vector<double> > res;
+  // vector< vector<double> > res;
+  vector<vector<double>> res( customhull.size() , vector<double> (2));
   for(int i = 0;i < customhull.size();i ++) {
         res[i][0] = customhull[i].x;
         res[i][1] = customhull[i].y;
