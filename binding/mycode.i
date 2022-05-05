@@ -11,4 +11,4 @@ namespace std {
   %template(VecVecdouble) vector< vector<double> >;
 }
 
-%include "code.h"
+%include "mycode.h"
